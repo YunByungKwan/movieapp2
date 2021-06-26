@@ -5,15 +5,18 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.ViewModel
+import com.kwancorp.movieapp2.databinding.FragMovieBookBinding
 
 class MovieBookFragment: Fragment() {
+
+    private lateinit var binding: FragMovieBookBinding
 
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        return super.onCreateView(inflater, container, savedInstanceState)
+        binding = FragMovieBookBinding.inflate(layoutInflater)
+        return binding.root
     }
 }

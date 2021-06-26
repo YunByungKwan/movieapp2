@@ -12,4 +12,25 @@
         tools:layout="@layout/frag_movie_list" >
     </fragment>
 
+    <fragment
+        android:id="@+id/nav_movie_detail"
+        android:name="com.kwancorp.movieapp2.ui.moviedetail.MovieDetailFragment"
+        android:label="@string/menu_movie_detail"
+        tools:layout="@layout/frag_movie_detail" >
+    </fragment>
+
+    <fragment
+        android:id="@+id/nav_movie_api"
+        android:name="com.kwancorp.movieapp2.ui.movieapi.MovieApiFragment"
+        android:label="@string/menu_movie_api"
+        tools:layout="@layout/frag_movie_api" >
+    </fragment>
+
+    <fragment
+        android:id="@+id/nav_movie_book"
+        android:name="com.kwancorp.movieapp2.ui.moviebook.MovieBookFragment"
+        android:label="@string/menu_movie_book"
+        tools:layout="@layout/frag_movie_book" >
+    </fragment>
+
 </navigation>
