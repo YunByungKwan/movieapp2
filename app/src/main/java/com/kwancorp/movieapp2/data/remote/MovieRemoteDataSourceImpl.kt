@@ -4,7 +4,9 @@ import com.kwancorp.movieapp2.data.entity.CommentResponse
 import com.kwancorp.movieapp2.data.entity.DetailMovieResponse
 import com.kwancorp.movieapp2.data.entity.MovieResponse
 
-class MovieRemoteDataSourceImpl: MovieRemoteDataSource {
+class MovieRemoteDataSourceImpl(
+    private val apiService: MovieApiService
+    ): MovieRemoteDataSource {
     override fun getMovieList(): MovieResponse {
         TODO("Not yet implemented")
     }
