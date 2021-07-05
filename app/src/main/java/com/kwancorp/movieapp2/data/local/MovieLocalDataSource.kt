@@ -9,11 +9,11 @@ interface MovieLocalDataSource {
 
     suspend fun getCommentList(id: Int): CommentResponse
 
-    suspend fun addComment(comment: HashMap<String, Object>)
+    suspend fun addComment(comment: HashMap<String, Any>)
 
-    suspend fun addLikeDisLike(count: HashMap<String, Object>)
+    suspend fun addLikeDisLike(count: HashMap<String, Any>)
 
-    suspend fun recommendComment(recommend: HashMap<String, Object>)
+    suspend fun recommendComment(recommend: HashMap<String, Any>)
 
     suspend fun insertMovieList(movieList: List<Movie>)
 

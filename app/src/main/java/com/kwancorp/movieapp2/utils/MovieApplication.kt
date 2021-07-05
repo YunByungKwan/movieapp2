@@ -8,8 +8,14 @@ import org.koin.android.ext.koin.androidContext
 import org.koin.core.context.startKoin
 
 class MovieApplication: Application() {
+    companion object {
+        lateinit var instance: MovieApplication
+    }
+
     override fun onCreate() {
         super.onCreate()
+
+        instance = this
 
         startKoin {
             androidContext(this@MovieApplication)
