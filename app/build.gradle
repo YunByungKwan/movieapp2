@@ -65,17 +65,15 @@ dependencies {
     // Glide
     implementation 'com.github.bumptech.glide:glide:4.12.0'
 
-    // Coroutine
-    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:1.5.0"
+    // Coroutines
+    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:$coroutines_version"
 
     // Dagger
-    def daggerVersion = "2.35.1"
-
-    implementation "com.google.dagger:dagger:$daggerVersion"
-    implementation "com.google.dagger:dagger-android:$daggerVersion"
-    implementation "com.google.dagger:dagger-android-support:$daggerVersion"
-    annotationProcessor "com.google.dagger:dagger-android-processor:$daggerVersion"
-    annotationProcessor "com.google.dagger:dagger-compiler:$daggerVersion"
+    implementation "com.google.dagger:dagger:$dagger_version"
+    implementation "com.google.dagger:dagger-android:$dagger_version"
+    implementation "com.google.dagger:dagger-android-support:$dagger_version"
+    annotationProcessor "com.google.dagger:dagger-android-processor:$dagger_version"
+    annotationProcessor "com.google.dagger:dagger-compiler:$dagger_version"
 
     // circleimageview
     implementation 'de.hdodenhof:circleimageview:3.1.0'
