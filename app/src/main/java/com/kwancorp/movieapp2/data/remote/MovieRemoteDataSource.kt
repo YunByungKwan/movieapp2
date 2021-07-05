@@ -5,15 +5,15 @@ import com.kwancorp.movieapp2.data.entity.DetailMovieResponse
 import com.kwancorp.movieapp2.data.entity.MovieResponse
 
 interface MovieRemoteDataSource {
-    fun getMovieList(): MovieResponse
+    suspend fun getMovieList(): MovieResponse
 
-    fun getDetailMovie(id: Int): DetailMovieResponse
+    suspend fun getDetailMovie(id: Int): DetailMovieResponse
 
-    fun getCommentList(id: Int): CommentResponse
+    suspend fun getCommentList(id: Int): CommentResponse
 
-    fun addComment(comment: HashMap<String, Object>)
+    suspend fun addComment(comment: HashMap<String, Any>)
 
-    fun addLikeDisLike(count: HashMap<String, Object>)
+    suspend fun addLikeDisLike(count: HashMap<String, Any>)
 
-    fun recommendComment(recommend: HashMap<String, Object>)
+    suspend fun recommendComment(recommend: HashMap<String, Any>)
 }

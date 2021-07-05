@@ -8,24 +8,24 @@ import retrofit2.http.*
 interface MovieApiService {
 
     @GET("/movie/readMovieList")
-    fun getMovieList(): MovieResponse
+    suspend fun getMovieList(): MovieResponse
 
     @GET("/movie/readMovie")
-    fun getDetailMovie(@Query("id") id: Int): DetailMovieResponse
+    suspend fun getDetailMovie(@Query("id") id: Int): DetailMovieResponse
 
     @GET("/movie/readCommentList")
-    fun getCommentList(@Query("id") id: Int): CommentResponse
+    suspend fun getCommentList(@Query("id") id: Int): CommentResponse
 
     @FormUrlEncoded
     @POST("/movie/createComment")
-    fun addComment(@FieldMap param: HashMap<String, Object>)
+    suspend fun addComment(@FieldMap param: HashMap<String, Any>)
 
     @FormUrlEncoded
     @POST("/movie/increaseLikeDisLike")
-    fun addLikeDisLike(@FieldMap param: HashMap<String, Object>)
+    suspend fun addLikeDisLike(@FieldMap param: HashMap<String, Any>)
 
     @FormUrlEncoded
     @POST("/movie/increaseRecommend")
-    fun recommendComment(@FieldMap param: HashMap<String, Object>)
+    suspend fun recommendComment(@FieldMap param: HashMap<String, Any>)
 
 }
