@@ -1,4 +1,4 @@
-package com.kwancorp.movieapp2.data
+package com.kwancorp.movieapp2.data.repository
 
 import com.kwancorp.movieapp2.data.entity.*
 

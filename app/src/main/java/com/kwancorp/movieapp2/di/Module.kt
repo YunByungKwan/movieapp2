@@ -1,10 +1,9 @@
 package com.kwancorp.movieapp2.di
 
-import com.kwancorp.movieapp2.data.MovieRepository
-import com.kwancorp.movieapp2.data.MovieRepositoryImpl
+import com.kwancorp.movieapp2.data.repository.MovieRepository
+import com.kwancorp.movieapp2.data.repository.MovieRepositoryImpl
 import com.kwancorp.movieapp2.data.local.MovieLocalDataSource
 import com.kwancorp.movieapp2.data.local.MovieLocalDataSourceImpl
-import com.kwancorp.movieapp2.data.local.dao.MovieDao
 import com.kwancorp.movieapp2.data.local.db.MovieDatabase
 import com.kwancorp.movieapp2.data.remote.MovieApiService
 import com.kwancorp.movieapp2.data.remote.MovieRemoteDataSource

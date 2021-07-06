@@ -1,8 +1,9 @@
-package com.kwancorp.movieapp2.data
+package com.kwancorp.movieapp2.data.repository
 
 import com.kwancorp.movieapp2.data.entity.*
 import com.kwancorp.movieapp2.data.local.MovieLocalDataSource
 import com.kwancorp.movieapp2.data.remote.MovieRemoteDataSource
+import com.kwancorp.movieapp2.data.repository.MovieRepository
 import com.kwancorp.movieapp2.utils.NetworkCompat
 
 class MovieRepositoryImpl(
