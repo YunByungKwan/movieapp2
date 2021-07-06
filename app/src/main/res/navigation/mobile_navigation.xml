@@ -10,6 +10,9 @@
         android:name="com.kwancorp.movieapp2.ui.movielist.MovieListFragment"
         android:label="@string/menu_movie_list"
         tools:layout="@layout/frag_movie_list" >
+        <action
+            android:id="@+id/act_nav_movie_list_to_detail"
+            app:destination="@id/nav_movie_detail" />
     </fragment>
 
     <fragment

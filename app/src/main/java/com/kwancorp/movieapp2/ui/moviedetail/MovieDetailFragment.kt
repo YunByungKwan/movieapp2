@@ -8,6 +8,7 @@ import androidx.fragment.app.Fragment
 import com.kwancorp.movieapp2.data.MovieRepository
 import com.kwancorp.movieapp2.databinding.FragMovieDetailBinding
 import com.kwancorp.movieapp2.ui.moviebook.MovieBookViewModel
+import com.kwancorp.movieapp2.utils.Constants
 import org.koin.android.ext.android.inject
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import org.koin.core.parameter.parametersOf
@@ -16,18 +17,40 @@ class MovieDetailFragment: Fragment() {
 
     private lateinit var binding: FragMovieDetailBinding
 
-    private val repository: MovieRepository by inject()
-
-    private val viewModel: MovieDetailViewModel by viewModel {
-        parametersOf(repository)
-    }
+    private val viewModel: MovieDetailViewModel by viewModel()
 
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        binding = FragMovieDetailBinding.inflate(layoutInflater)
+        binding = FragMovieDetailBinding.inflate(layoutInflater).apply {
+            fragment = this@MovieDetailFragment
+            viewmodel = viewModel
+        }
+        setMovieInfo()
+
         return binding.root
+    }
+
+    private fun setMovieInfo() {
+        arguments?.let {
+            viewModel.getDetailMovie(it.getInt(Constants.MOVIE_ID))
+            viewModel.getCommentList(it.getInt(Constants.MOVIE_ID))
+        }
+    }
+
+    fun onClickWriteCommentButton() {
+
+    }
+
+    fun onClickLoadAllButton() {
+
+    }
+
+    fun onClickLikeButton() {}
+
+    fun onClickDisLikeButton() {
+
     }
 }

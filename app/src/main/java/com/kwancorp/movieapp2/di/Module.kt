@@ -4,6 +4,8 @@ import com.kwancorp.movieapp2.data.MovieRepository
 import com.kwancorp.movieapp2.data.MovieRepositoryImpl
 import com.kwancorp.movieapp2.data.local.MovieLocalDataSource
 import com.kwancorp.movieapp2.data.local.MovieLocalDataSourceImpl
+import com.kwancorp.movieapp2.data.local.dao.MovieDao
+import com.kwancorp.movieapp2.data.local.db.MovieDatabase
 import com.kwancorp.movieapp2.data.remote.MovieApiService
 import com.kwancorp.movieapp2.data.remote.MovieRemoteDataSource
 import com.kwancorp.movieapp2.data.remote.MovieRemoteDataSourceImpl
@@ -18,7 +20,8 @@ import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
 val appModules = module {
-    single<MovieLocalDataSource> { MovieLocalDataSourceImpl() }
+    single { MovieDatabase.getInstance(get())!! }
+    single<MovieLocalDataSource> { MovieLocalDataSourceImpl(get()) }
     single<MovieRemoteDataSource> { MovieRemoteDataSourceImpl(get()) }
     single<MovieRepository> { MovieRepositoryImpl(get(), get()) }
 }
@@ -34,19 +37,13 @@ val networkModule = module {
 }
 
 val viewModelModule = module {
-    viewModel { (repository: MovieRepository) ->
-        MovieApiViewModel(repository)
-    }
-
-    viewModel { (repository: MovieRepository) ->
-        MovieBookViewModel(repository)
-    }
-
-    viewModel { (repository: MovieRepository) ->
-        MovieDetailViewModel(repository)
-    }
-
-    viewModel { (repository: MovieRepository) ->
-        MovieListViewModel(repository)
-    }
+    viewModel { MovieListViewModel(get()) }
+    viewModel { MovieApiViewModel(get()) }
+    viewModel { MovieBookViewModel(get()) }
+    viewModel { MovieDetailViewModel(get()) }
 }
+
+
+
+
+

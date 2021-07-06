@@ -1,8 +1,529 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout xmlns:android="http://schemas.android.com/apk/res/android">
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
+    <data>
+        <variable
+            name="fragment"
+            type="com.kwancorp.movieapp2.ui.moviedetail.MovieDetailFragment" />
+        <variable
+            name="viewmodel"
+            type="com.kwancorp.movieapp2.ui.moviedetail.MovieDetailViewModel" />
+    </data>
+    <ScrollView
+        android:layout_height="match_parent"
+        android:layout_width="match_parent"
+        android:fillViewport="true">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:background="@drawable/thumbnail_base"
+                android:padding="@dimen/base_padding_size">
+
+                <ImageView
+                    android:id="@+id/iv_movie_poster"
+                    android:layout_width="140dp"
+                    android:layout_height="200dp"
+                    android:layout_marginEnd="@dimen/base_padding_size"
+                    app:url="@{viewmodel.detailMovie.get(0).image}"/>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical"
+                    android:gravity="center_vertical"
+                    android:layout_marginStart="@dimen/base_padding_size">
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:gravity="center_vertical"
+                        android:layout_marginBottom="@dimen/base_padding_size">
+
+                        <TextView
+                            android:id="@+id/tv_movie_title"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@{viewmodel.detailMovie.get(0).title}"
+                            android:textSize="@dimen/title_text_size"
+                            android:textColor="@color/colorThumbnailText"
+                            android:textStyle="bold"
+                            android:layout_marginEnd="@dimen/base_padding_size"/>
+
+                        <ImageView
+                            android:id="@+id/iv_movie_rating"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:src="@drawable/ic_15"/>
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:gravity="center_vertical">
+
+                        <TextView
+                            android:id="@+id/tv_release_date"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@{viewmodel.detailMovie.get(0).date}"
+                            android:textColor="@color/colorThumbnailText"/>
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/open"
+                            android:textColor="@color/colorThumbnailText"/>
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:gravity="center_vertical">
+
+                        <TextView
+                            android:id="@+id/tv_genre"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@{viewmodel.detailMovie.get(0).genre}"
+                            android:textColor="@color/colorThumbnailText"
+                            android:layout_marginEnd="@dimen/base_half_padding_size"/>
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/slash"
+                            android:textColor="@color/colorThumbnailText"
+                            android:layout_marginEnd="@dimen/base_half_padding_size"/>
+
+                        <TextView
+                            android:id="@+id/tv_running_time"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@{String.valueOf(viewmodel.detailMovie.get(0).duration)}"
+                            android:textColor="@color/colorThumbnailText"
+                            android:layout_marginEnd="@dimen/base_half_padding_size"/>
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/minute"
+                            android:textColor="@color/colorThumbnailText" />
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:gravity="center_vertical">
+
+                        <Button
+                            android:id="@+id/btn_like"
+                            android:layout_width="25dp"
+                            android:layout_height="25dp"
+                            android:background="@drawable/thumbs_up_selector"
+                            android:layout_marginEnd="@dimen/base_half_padding_size"
+                            android:onClick="@{(v) -> fragment.onClickLikeButton()}"/>
+
+                        <TextView
+                            android:id="@+id/tv_like_count"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@{String.valueOf(viewmodel.detailMovie.get(0).like)}"
+                            android:textColor="@color/colorThumbnailText"
+                            android:layout_marginEnd="@dimen/base_half_padding_size"/>
+
+                        <Button
+                            android:id="@+id/btn_dislike"
+                            android:layout_width="25dp"
+                            android:layout_height="25dp"
+                            android:background="@drawable/thumbs_down_selector"
+                            android:layout_marginEnd="@dimen/base_half_padding_size"
+                            android:onClick="@{(v) -> fragment.onClickDisLikeButton()}"/>
+
+
+                        <TextView
+                            android:id="@+id/tv_dislike_count"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textColor="@color/colorThumbnailText"
+                            android:text="@{String.valueOf(viewmodel.detailMovie.get(0).dislike)}"/>
+
+                    </LinearLayout>
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:weightSum="3">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:gravity="center_horizontal"
+                    android:layout_weight="1"
+                    android:paddingTop="@dimen/base_double_padding_size"
+                    android:paddingBottom="@dimen/base_double_padding_size">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/reservation_rate"
+                        android:layout_marginBottom="@dimen/base_padding_size"/>
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:id="@+id/tv_reservation_rate_ranking"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@{String.valueOf(viewmodel.detailMovie.get(0).reservationGrade)}"/>
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/ranking"
+                            android:layout_marginEnd="@dimen/base_padding_size"/>
+
+                        <TextView
+                            android:id="@+id/tv_reservation_rate"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@{String.valueOf(viewmodel.detailMovie.get(0).audienceRating)}"/>
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/percentage"/>
+
+                    </LinearLayout>
+
+                </LinearLayout>
+
+                <View style="@style/MidLineVertical"/>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:gravity="center_horizontal"
+                    android:layout_weight="1"
+                    android:paddingTop="@dimen/base_double_padding_size"
+                    android:paddingBottom="@dimen/base_double_padding_size">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/grade"
+                        android:layout_marginBottom="@dimen/base_padding_size"/>
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:gravity="center_vertical">
+
+                        <RatingBar
+                            android:id="@+id/rating"
+                            style="?android:ratingBarStyleSmall"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginEnd="@dimen/base_padding_size"
+                            android:numStars="5"
+                            android:stepSize="0.01"
+                            android:rating="@{viewmodel.detailMovie.get(0).reviewerRating/2F}"/>
+
+                        <TextView
+                            android:id="@+id/tv_grade"
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:text="@{String.valueOf(viewmodel.detailMovie.get(0).reviewerRating)}"/>
+
+                    </LinearLayout>
+
+                </LinearLayout>
+
+                <View style="@style/MidLineVertical"/>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:gravity="center_horizontal"
+                    android:layout_weight="1"
+                    android:paddingTop="@dimen/base_double_padding_size"
+                    android:paddingBottom="@dimen/base_double_padding_size">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/cumulative_audience"
+                        android:layout_marginBottom="@dimen/base_padding_size"/>
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:id="@+id/tv_cumulative_audience"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"/>
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/count" />
+
+                    </LinearLayout>
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="10dp"
+                android:background="@color/colorBackground" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="@dimen/base_padding_size">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/story"
+                    android:textSize="@dimen/title_text_size"
+                    android:textColor="@color/colorTitleText"
+                    android:textStyle="bold"
+                    android:layout_marginBottom="@dimen/base_padding_size"/>
+
+                <TextView
+                    android:id="@+id/tv_story"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@{viewmodel.detailMovie.get(0).synopsis}"/>
+
+            </LinearLayout>
+
+            <View style="@style/MidLineHorizontal" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="@dimen/base_padding_size">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/director_and_casting"
+                    android:textColor="@color/colorTitleText"
+                    android:textStyle="bold"
+                    android:layout_marginBottom="@dimen/base_padding_size"/>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_marginBottom="@dimen/base_padding_size">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/director"
+                        android:textColor="@color/colorTitleText"
+                        android:textStyle="bold"
+                        android:layout_marginEnd="@dimen/base_padding_size"/>
+
+                    <TextView
+                        android:id="@+id/tv_director_name"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@{viewmodel.detailMovie.get(0).director}"/>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/casting"
+                        android:textColor="@color/colorTitleText"
+                        android:textStyle="bold"
+                        android:layout_marginEnd="@dimen/base_padding_size"/>
+
+                    <TextView
+                        android:id="@+id/tv_casting"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@{viewmodel.detailMovie.get(0).actor}"/>
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <View style="@style/MidLineHorizontal" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="@dimen/base_padding_size">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/gallery"
+                    android:textColor="@color/colorTitleText"
+                    android:textStyle="bold"
+                    android:layout_marginBottom="@dimen/base_padding_size"/>
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/rv_gallery"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                    tools:listitem="@layout/gallery_item"/>
+
+            </LinearLayout>
+
+            <View style="@style/MidLineHorizontal" />
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/constraintLayout"
+                android:layout_width="match_parent"
+                android:layout_height="400dp"
+                android:padding="@dimen/base_padding_size">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentStart="true"
+                    android:text="@string/comment"
+                    android:textColor="@color/colorTitleText"
+                    android:textStyle="bold"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <LinearLayout
+                    android:id="@+id/linearLayout"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:gravity="top"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent">
+
+                    <ImageView
+                        android:id="@+id/iv_write_comment"
+                        android:layout_width="25dp"
+                        android:layout_height="25dp"
+                        android:src="@drawable/ic_review_selected"
+                        android:layout_marginEnd="@dimen/base_padding_size"/>
+
+                    <TextView
+                        android:id="@+id/tv_write_comment"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentEnd="true"
+                        android:text="@string/write"
+                        android:textColor="#E44418"
+                        android:textStyle="bold"
+                        android:onClick="@{(v) -> fragment.onClickWriteCommentButton()}"/>
+
+                </LinearLayout>
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/rv_comment"
+                    android:layout_width="match_parent"
+                    android:layout_height="250dp"
+                    app:layout_constraintBottom_toTopOf="@+id/btn_load_all"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/linearLayout" />
+
+                <Button
+                    android:id="@+id/btn_load_all"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/rect_shape_purple"
+                    android:padding="@dimen/base_double_padding_size"
+                    android:text="@string/see_all"
+                    android:textColor="#611F91"
+                    android:onClick="@{(v) -> fragment.onClickLoadAllButton()}"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <View style="@style/MidLineHorizontal" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center_vertical"
+                android:padding="@dimen/base_padding_size">
+
+                <ImageView
+                    android:id="@+id/iv_facebook"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/ic_facebook"
+                    android:layout_marginEnd="@dimen/base_padding_size"/>
+
+                <ImageView
+                    android:id="@+id/iv_kakao"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/ic_kakao"
+                    android:layout_marginEnd="@dimen/base_padding_size"/>
+
+                <Button
+                    android:id="@+id/btn_book"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:text="@string/reservation"
+                    android:textSize="@dimen/title_text_size"
+                    android:textColor="@color/colorThumbnailText"
+                    android:textStyle="bold"
+                    android:background="@drawable/rect_shape_carrot"/>
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </ScrollView>
 </layout>

@@ -16,11 +16,7 @@ class MovieBookFragment: Fragment() {
 
     private lateinit var binding: FragMovieBookBinding
 
-    private val repository: MovieRepository by inject()
-
-    private val viewModel: MovieBookViewModel by viewModel {
-        parametersOf(repository)
-    }
+    private val movieBookViewModel: MovieBookViewModel by viewModel()
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -28,6 +24,7 @@ class MovieBookFragment: Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         binding = FragMovieBookBinding.inflate(layoutInflater)
+        binding.viewModel = movieBookViewModel
         return binding.root
     }
 }

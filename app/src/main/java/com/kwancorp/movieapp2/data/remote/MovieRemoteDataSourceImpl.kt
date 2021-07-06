@@ -1,5 +1,6 @@
 package com.kwancorp.movieapp2.data.remote
 
+import android.util.Log
 import com.kwancorp.movieapp2.data.entity.CommentResponse
 import com.kwancorp.movieapp2.data.entity.DetailMovieResponse
 import com.kwancorp.movieapp2.data.entity.MovieResponse
@@ -8,6 +9,7 @@ class MovieRemoteDataSourceImpl(
     private val apiService: MovieApiService
     ): MovieRemoteDataSource {
     override suspend fun getMovieList(): MovieResponse {
+        Log.d("TAG", "MovieRemoteDataSourceImpl - getMovieList")
         return apiService.getMovieList()
     }
 

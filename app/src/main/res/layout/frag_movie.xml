@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <data>
+        <variable
+            name="constants"
+            type="com.kwancorp.movieapp2.utils.Constants" />
+        <variable
+            name="fragment"
+            type="com.kwancorp.movieapp2.ui.movielist.MovieFragment" />
+    </data>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:background="@drawable/main_background"
+        android:gravity="center_horizontal|center_vertical">
+
+        <ImageView
+            android:id="@+id/iv_movie_poster"
+            android:layout_width="200dp"
+            android:layout_height="300dp"
+            android:layout_marginBottom="@dimen/base_padding_size"
+            app:url="@{fragment.arguments.getString(constants.MOVIE_IMG)}"/>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:gravity="center_horizontal|center_vertical">
+
+            <TextView
+                android:id="@+id/tv_movie_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="#FFFFFF"
+                android:textSize="@dimen/title_text_size"
+                app:position="@{fragment.arguments.getInt(constants.MOVIE_POS)}"
+                app:title="@{fragment.arguments.getString(constants.MOVIE_TITLE)}"
+                android:layout_marginBottom="@dimen/base_padding_size"/>
+
+            <View style="@style/MidThinGradationLineHorizontal"
+                android:layout_marginRight="@dimen/base_padding_size"
+                android:layout_marginLeft="@dimen/base_padding_size"
+                android:layout_marginBottom="@dimen/base_padding_size"/>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center_vertical"
+                android:layout_marginBottom="@dimen/base_padding_size">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/reservation_rate"
+                    android:textColor="#FFFFFF"
+                    android:layout_marginRight="@dimen/base_padding_size"/>
+
+                <TextView
+                    android:id="@+id/tv_reservation_rate"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="#FFFFFF"
+                    app:intValue="@{fragment.arguments.getInt(constants.MOVIE_RESERV_RATE)}"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/percentage"
+                    android:textColor="#FFFFFF"/>
+
+                <View style="@style/MidLineVertical"
+                    android:layout_marginRight="@dimen/base_padding_size"
+                    android:layout_marginLeft="@dimen/base_padding_size"/>
+
+                <TextView
+                    android:id="@+id/tv_watch_age"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="#FFFFFF"
+                    app:intValue="@{fragment.arguments.getInt(constants.MOVIE_GRADE)}"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/watch_age"
+                    android:textColor="#FFFFFF"/>
+
+            </LinearLayout>
+
+            <Button
+                android:id="@+id/btn_detail_see"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/see_detail"
+                android:textColor="#FFFFFF"
+                android:textSize="@dimen/title_text_size"
+                android:background="@drawable/rect_shape_carrot_round"
+                android:onClick="@{(v) -> fragment.onClickDetailSeeButton(v)}"/>
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</layout>

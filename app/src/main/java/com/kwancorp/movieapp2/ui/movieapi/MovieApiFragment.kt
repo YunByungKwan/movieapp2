@@ -15,11 +15,8 @@ class MovieApiFragment: Fragment() {
 
     private lateinit var binding: FragMovieApiBinding
 
-    private val repository: MovieRepository by inject()
+    private val viewModel: MovieApiViewModel by viewModel()
 
-    private val viewModel: MovieApiViewModel by viewModel {
-        parametersOf(repository)
-    }
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,

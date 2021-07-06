@@ -4,4 +4,45 @@
     <style name="SplashTheme" parent="Theme.AppCompat.NoActionBar">
         <item name="android:windowBackground">@drawable/splash_background</item>
     </style>
+
+
+    <!-- Custom rating bar theme. -->
+    <style name="RatingBarTheme" parent="Theme.AppCompat">
+        <item name="colorControlActivated">@color/colorSmallRatingBar</item>
+    </style>
+
+    <!-- white Vertical view line. -->
+    <style name="MidLineVerticalWhite">
+        <item name="android:layout_width">@dimen/dim_one</item>
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:background">@color/colorBackground</item>
+    </style>
+
+    <!-- Vertical view line. -->
+    <style name="MidLineVertical">
+        <item name="android:layout_width">@dimen/dim_two</item>
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:background">@color/colorBackgroundDark</item>
+    </style>
+
+    <!-- Horizontal view line. -->
+    <style name="MidLineHorizontal">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">@dimen/base_padding_size</item>
+        <item name="android:background">@color/colorBackground</item>
+    </style>
+
+    <!-- Horizontal thin view line. -->
+    <style name="MidThinLineHorizontal">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">@dimen/dim_one</item>
+        <item name="android:background">@color/horizontalBackground</item>
+    </style>
+
+    <!-- Horizontal gradation view line. -->
+    <style name="MidThinGradationLineHorizontal">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">@dimen/dim_one</item>
+        <item name="android:background">@drawable/gradation</item>
+    </style>
 </resources>
