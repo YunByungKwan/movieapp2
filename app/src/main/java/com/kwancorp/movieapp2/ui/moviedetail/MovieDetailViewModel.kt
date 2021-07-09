@@ -4,9 +4,9 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.kwancorp.movieapp2.data.repository.MovieRepository
 import com.kwancorp.movieapp2.data.entity.Comment
 import com.kwancorp.movieapp2.data.entity.DetailMovie
+import com.kwancorp.movieapp2.data.repository.MovieRepository
 import kotlinx.coroutines.launch
 
 class MovieDetailViewModel(private val repository: MovieRepository): ViewModel() {

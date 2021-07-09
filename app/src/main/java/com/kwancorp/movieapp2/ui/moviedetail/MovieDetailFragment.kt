@@ -23,6 +23,7 @@ class MovieDetailFragment: Fragment() {
         binding = FragMovieDetailBinding.inflate(layoutInflater).apply {
             fragment = this@MovieDetailFragment
             viewmodel = viewModel
+            lifecycleOwner = viewLifecycleOwner
         }
         setMovieInfo()
 
